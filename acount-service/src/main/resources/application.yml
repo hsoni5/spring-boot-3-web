@@ -1,0 +1,56 @@
+server:
+  port: 8000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+# Enabling H2 Console
+spring:
+  application:
+    name: quiz-service
+  h2:
+  console.enabled: true
+  # Show all queries
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        generate_statistics: true
+    defer-datasource-initialization: true
+  datasource:
+    url: jdbc:h2:mem:testdb
+  data:
+    jpa.repositories.bootstrap-mode: default
+
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka
+
+#SWAGGER
+springdoc:
+  openapi:
+    dev-url: http://localhost:8000
+    prod-url: https://bezkoder-api
+  api-docs:
+    enabled: true
+    path: /swagger/api-docs
+  swagger-ui:
+    enabled: true
+    path: /swagger/ui
+    tryItOutEnabled: true
+    operationsSorter: method
+    tagsSorter: alpha
+    filter: true
+    packages-to-scan: com.soni
+
+#Turn Statistics on
+logging:
+  level:
+    org:
+      hibernate:
+        stat: debug
+        type: trace

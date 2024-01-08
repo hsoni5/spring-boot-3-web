@@ -1,0 +1,32 @@
+server:
+  port: 8100
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+spring:
+  application:
+        name: notification-service
+
+#SWAGGER
+springdoc:
+  openapi:
+    dev-url: http://localhost:8100
+    prod-url: https://bezkoder-api
+  api-docs:
+       enabled: true
+       path: /swagger/api-docs
+  swagger-ui:
+       enabled: true
+       path: /swagger/ui
+       tryItOutEnabled: true
+       operationsSorter: method
+       tagsSorter: alpha
+       filter: true
+       packages-to-scan: com.soni
+
+eureka:
+  client:
+     service-url.default-zone: http://localhost:8761/eureka
