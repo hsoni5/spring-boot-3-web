@@ -5,9 +5,7 @@ import com.soni.spring.boot3.audit.entity.User;
 import com.soni.spring.boot3.audit.repository.CompanyRepository;
 import com.soni.spring.boot3.audit.repository.UserAuditRepository;
 import com.soni.spring.boot3.audit.repository.UserRepository;
-import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.PersistenceContext;
 import org.hibernate.envers.AuditReader;
 import org.hibernate.envers.AuditReaderFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,6 +60,7 @@ public class SpringBoot3AuditApplication implements CommandLineRunner {
                 .stream()
                 .collect(Collectors.toList());
     }
+
     //Fetch all history for entity
     public List<User> getAllRevisionsForEntity() {
         AuditReader auditReader = AuditReaderFactory.get(entityManagerFactory.createEntityManager());
